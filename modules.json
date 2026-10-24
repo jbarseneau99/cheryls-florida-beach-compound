@@ -1,0 +1,17 @@
+{
+ "property_views": [
+  {"id":"map","label":"Map","status":"live"},
+  {"id":"dossier","label":"Dossier","status":"live"},
+  {"id":"constraints","label":"Constraints","status":"live"},
+  {"id":"due-diligence","label":"Due Diligence","status":"coming_soon","stage":"Plan"},
+  {"id":"offer","label":"Offer & Negotiation","status":"coming_soon","stage":"Execute"},
+  {"id":"closing","label":"Closing Timeline","status":"coming_soon","stage":"Execute"}
+ ],
+ "global": [
+  {"id":"constraints","label":"Constraints","section":"Reference","status":"live","renderer":"constraints","data":"constraints/constraints.json"},
+  {"id":"finance","label":"Finance","section":"Management","status":"live","renderer":"table","data":"management/finance.json"},
+  {"id":"insurance","label":"Insurance","section":"Management","status":"live","renderer":"table","data":"management/insurance.json"},
+  {"id":"contractors","label":"Contractor / Architect Shortlist","section":"Build","status":"coming_soon"},
+  {"id":"build-schedule","label":"Build Schedule","section":"Build","status":"coming_soon"}
+ ]
+}

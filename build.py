@@ -34,7 +34,7 @@ m.get_root().header.add_child(folium.Element(f"<title>{NAME}</title><style>html,
 m.get_root().html.add_child(folium.Element(f'''<div style="position:fixed;top:12px;left:60px;z-index:9999;background:rgba(0,0,0,.78);color:#fff;padding:16px 22px;border-radius:12px;font:22px/1.4 sans-serif;max-width:520px">
 <div style="font-size:30px;font-weight:bold;color:#ff6b88">{NAME}</div>
 6441 Gulfside Rd, Longboat Key, FL 34228<br>Manatee County · Parcel <b>7843900007</b><br>
-Lot <b>0.71 ac</b> (PAO: 0.714 ac) · List <b>$5.6M</b> · Gulf-front<br>
+Listing: Reed Murphy, MLS 84692771, Sleepy Lagoon<br>Lot <b>0.71 ac</b> (PAO: 0.714 ac) · List <b>$5.6M</b> · Gulf-front<br>
 <span style="color:#7CFC00">Boundary: REAL (Manatee County PAO parcel GIS)</span><br>
 <span style="font-size:16px">Context: Manatee GIS streets, OSM shoreline/vegetation. Envelope only, no structures.</span></div>'''))
-m.save('florida-compound/index.html')
+m.save('index.html')

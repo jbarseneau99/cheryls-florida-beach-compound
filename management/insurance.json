@@ -1,0 +1,160 @@
+{
+  "generated": "2026-10-24",
+  "coverages": [
+    {
+      "type": "Wind / homeowners (HO5 private-client or E&S)",
+      "status": "Required by lenders; essential",
+      "detail": "Standard admitted markets often decline LBK high values; placement usually via private-client carriers (Chubb, PURE, Vault, AIG PC, Berkley One, Cincinnati) or surplus lines. Hurricane deductible is % of dwelling limit: offers $500/2/5/10%; at $1M-$3M carrier may offer 3% instead of 2%; at $3M+ need not offer 2%; applies once per calendar year (s. 627.701).",
+      "sources": [
+        "https://hendricksonins.com/high-value-home-insurance.html",
+        "https://hendricksonins.com/longboat-key.html"
+      ]
+    },
+    {
+      "type": "Flood - NFIP",
+      "status": "Required for federally backed mortgage in SFHA; Citizens requires flood for dwelling RC >= $400k since 1/1/2026",
+      "detail": "Max $250,000 building / $100,000 contents.",
+      "sources": [
+        "https://blog.teamrenick.com/understanding-property-insurance-on-longboat-key/",
+        "https://hendricksonins.com/high-value-home-insurance.html"
+      ]
+    },
+    {
+      "type": "Private excess flood",
+      "status": "Strongly recommended",
+      "detail": "Covers rebuild value above NFIP $250k cap; 'standard practice, not an upsell' on LBK. Carriers cited: Palomar, Neptune, Wright Flood. Private flood can beat NFIP on well-elevated homes with 2+ ft freeboard.",
+      "sources": [
+        "https://hendricksonins.com/longboat-key.html",
+        "https://blog.teamrenick.com/understanding-property-insurance-on-longboat-key/",
+        "https://blog.teamrenick.com/comparing-waterfront-risks-anna-maria-vs-longboat-key/"
+      ]
+    },
+    {
+      "type": "Citizens Property Insurance (last resort)",
+      "status": "Almost certainly NOT available for this home",
+      "detail": "Coverage A must be < $700,000 outside Miami-Dade/Monroe (Manatee included). Proposed $1.5M for Miami-Dade/Monroe was not enacted. A multi-million-dollar rebuild exceeds the cap. Citizens also subject to depopulation and assessments.",
+      "sources": [
+        "https://www.citizensfla.com/documents/20702/38965605/Apex+Star+Coverage+Comparison+Chart+-+HO3.pdf/45a0ff7b-c069-fd50-d383-26c59537dc15?t=1761919189067",
+        "https://hendricksonins.com/high-value-home-insurance.html"
+      ],
+      "note": "A 2024 Senate bill analysis (CS/SB 1106) described raising the cap to $1M with conditions; Citizens' Dec 2025 chart and Hendrickson still state <$700k for most counties - treat $700k as current; needs verification with Citizens.",
+      "extra_sources": [
+        "https://flsenate.gov/Session/Bill/2024/1106/Analyses/2024s01106.bi.PDF"
+      ]
+    },
+    {
+      "type": "Personal umbrella liability",
+      "status": "Recommended",
+      "detail": "Private-client programs typically pair the home with a multi-million umbrella.",
+      "sources": [
+        "https://hendricksonins.com/high-value-home-insurance.html"
+      ],
+      "premium": "needs verification"
+    },
+    {
+      "type": "Builder's risk (course of construction)",
+      "status": "Required by lenders/contracts during build",
+      "detail": "Covers structure during construction; wind/named storm and flood often sublimited or excluded on coastal sites - confirm. No sourced premium found.",
+      "sources": [],
+      "premium": "needs verification"
+    },
+    {
+      "type": "Vacant land / general liability during demo and build",
+      "status": "Recommended",
+      "detail": "",
+      "sources": [],
+      "premium": "needs verification"
+    }
+  ],
+  "premium_factors": [
+    {
+      "factor": "Wind mitigation inspection (OIR-B1-1802)",
+      "effect": "Credits required by law for roof strength, roof covering, roof-to-wall, wall-to-foundation, opening protection (s. 627.0629). Example: adding rated openings cut best quote ~21% ($13,286 -> $10,501) on a 2026 Osprey file.",
+      "source": "https://hendricksonins.com/high-value-home-insurance.html"
+    },
+    {
+      "factor": "Elevation certificate / freeboard",
+      "effect": "Drives NFIP Risk Rating 2.0 and private flood pricing; 2+ ft above BFE opens cheaper private flood.",
+      "source": "https://blog.teamrenick.com/comparing-waterfront-risks-anna-maria-vs-longboat-key/"
+    },
+    {
+      "factor": "Hardened construction (post-2002 FBC, hip roof, impact openings, concrete)",
+      "effect": "Notably lower wind premiums.",
+      "source": "https://blog.teamrenick.com/cost-of-luxury-waterfront-homes-on-longboat-key-2025-market-rates/"
+    },
+    {
+      "factor": "Roof age",
+      "effect": "Carrier can't refuse solely for roof age if <15 yrs (s. 627.7011(5)).",
+      "source": "https://hendricksonins.com/high-value-home-insurance.html"
+    },
+    {
+      "factor": "Hurricane deductible %",
+      "effect": "Higher % lowers premium; on large limits the dollar exposure is large (2% of $5M = $100k).",
+      "source": "https://hendricksonins.com/high-value-home-insurance.html"
+    }
+  ],
+  "premium_ranges": [
+    {
+      "coverage": "Combined wind+flood, Gulf-front VE single-family, pre-2000",
+      "annual": "$25,000-$40,000",
+      "source": "https://blog.teamrenick.com/understanding-property-insurance-on-longboat-key/"
+    },
+    {
+      "coverage": "Total insurance, Sarasota-Manatee luxury waterfront >$2M",
+      "annual": "$25,000-$40,000 common; some >$60,000; $20,000-$60,000+ planning range",
+      "source": "https://blog.teamrenick.com/navigating-insurance-for-florida-luxury-waterfront-homes/"
+    },
+    {
+      "coverage": "Wind/homeowners, LBK waterfront",
+      "annual": "$12,000-$25,000",
+      "source": "https://blog.teamrenick.com/cost-of-luxury-waterfront-homes-on-longboat-key-2025-market-rates/"
+    },
+    {
+      "coverage": "NFIP flood, Zone VE single-family",
+      "annual": "$8,000-$20,000+",
+      "source": "https://blog.teamrenick.com/understanding-property-insurance-on-longboat-key/"
+    },
+    {
+      "coverage": "Premium for a new multi-million-dollar hardened compound (dwelling RC ~$5-7M)",
+      "annual": "needs verification - published ranges are for $1-2.5M homes; obtain private-client quotes"
+    },
+    {
+      "coverage": "Umbrella, builder's risk",
+      "annual": "needs verification"
+    }
+  ],
+  "brokers": [
+    {
+      "name": "Hendrickson Insurance",
+      "location": "Sarasota (serves Longboat Key)",
+      "specialty": "High-net-worth/private client (Chubb, PURE, Vault, AIG PC, Berkley One, Cincinnati), excess flood, E&S",
+      "url": "https://hendricksonins.com/longboat-key.html",
+      "url_check": "200 OK 2026-10-24",
+      "phone": "941-957-2796"
+    },
+    {
+      "name": "Secur-All Agency, Inc.",
+      "location": "Longboat Key office (6350 Gulf of Mexico Dr per Google listing; site says FL office moved)",
+      "specialty": "Independent; represents Chubb; flood",
+      "url": "https://secur-all.com/",
+      "url_check": "Loads in browser fetch (curl got 403 bot block)",
+      "phone": "941-383-3388 (from business listing; not shown on homepage - needs verification)"
+    },
+    {
+      "name": "Ben Brown Insurance",
+      "location": "Sarasota",
+      "specialty": "Private Client Division (Chubb, AIG, PURE, Travelers, Lloyd's)",
+      "url": "https://benbrowninsurance.com/personal-insurance/",
+      "url_check": "200 OK 2026-10-24",
+      "phone": "941-366-9373 (published on site)"
+    },
+    {
+      "name": "Greene & Associates",
+      "location": "Sarasota page (agency HQ elsewhere in FL)",
+      "specialty": "High-value waterfront / barrier-island homes, agreed value",
+      "url": "https://www.greeneinsurance.com/florida/sarasota",
+      "url_check": "200 OK 2026-10-24",
+      "phone": "800-252-6885 (on site; local Sarasota number needs verification)"
+    }
+  ]
+}

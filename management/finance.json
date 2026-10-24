@@ -1,0 +1,242 @@
+{
+  "property": {
+    "address": "6441 Gulfside Road, Longboat Key FL 34228",
+    "county": "Manatee",
+    "lot_acres": 0.71,
+    "list_price": 5600000,
+    "mls": "84692771",
+    "flood_zone": "VE (Gulf-front; confirm with elevation certificate/FIRM)"
+  },
+  "generated": "2026-10-24",
+  "parameters": {
+    "sqft": {
+      "default": 6000,
+      "min": 3000,
+      "max": 12000,
+      "step": 250
+    },
+    "existing_house_sqft": {
+      "default": 4000,
+      "status": "needs verification"
+    },
+    "cost_tier": {
+      "default": "mid",
+      "options": {
+        "low": {
+          "per_sqft": 600
+        },
+        "mid": {
+          "per_sqft": 800
+        },
+        "high": {
+          "per_sqft": 1000
+        }
+      }
+    },
+    "contingency_pct": {
+      "default": 15,
+      "low": 10,
+      "mid": 15,
+      "high": 20
+    },
+    "soft_cost_pct": {
+      "low": 10,
+      "mid": 12.5,
+      "high": 15,
+      "status": "needs verification"
+    },
+    "foundation": {
+      "low": 40000,
+      "mid": 80000,
+      "high": 120000
+    },
+    "property_tax_rate": 0.0135,
+    "build_years": {
+      "low": 2,
+      "mid": 2.5,
+      "high": 3
+    },
+    "shell_share_of_hard_after_foundation": 0.45
+  },
+  "calc": "hard=sqft*per_sqft(tier); shell=(hard-foundation)*0.45; finishes=(hard-foundation)*0.55; soft=hard*soft_pct; build_subtotal=demo+hard+site_pool+seawall+soft; contingency=build_subtotal*contingency_pct; total=land+closing+build_subtotal+contingency+carrying. Low/likely/high = all inputs at low/mid/high tier.",
+  "line_items": [
+    {
+      "id": "land",
+      "label": "Land (list price, MLS 84692771)",
+      "low": 5600000,
+      "mid": 5600000,
+      "high": 5600000,
+      "formula": "fixed",
+      "sources": [],
+      "note": "List price; negotiated price may differ.",
+      "status": "sourced"
+    },
+    {
+      "id": "closing",
+      "label": "Buyer closing costs (cash)",
+      "low": 56000,
+      "mid": 84000,
+      "high": 112000,
+      "formula": "land * 1%/1.5%/2%",
+      "sources": [
+        "https://atlantictitlefirm.com/florida-closing-cost-calculator"
+      ],
+      "note": "Cash purchase ~1-2% of price; 2-5% if financed.",
+      "status": "sourced"
+    },
+    {
+      "id": "demolition",
+      "label": "Demolition of existing house",
+      "low": 24000,
+      "mid": 32000,
+      "high": 40000,
+      "formula": "existing_sqft * $6/$8/$10",
+      "sources": [
+        "https://pawdemo.com/house-demolition-cost-breakdown-in-florida/"
+      ],
+      "note": "$6-10/sf demolition (FL 2025). Existing house sq ft assumed 4,000 - needs verification from MLS/property appraiser; asbestos/permit extras not included.",
+      "status": "needs verification"
+    },
+    {
+      "id": "pile_foundation",
+      "label": "Pile foundation (V-zone, engineered piles)",
+      "low": 40000,
+      "mid": 80000,
+      "high": 120000,
+      "formula": "subtracted from all-in $/sf hard cost",
+      "sources": [
+        "https://pinelandengineering.com/blog/pile-foundations-vs-slab-foundations-florida-coastal/",
+        "https://blog.teamrenick.com/comparing-waterfront-risks-anna-maria-vs-longboat-key/"
+      ],
+      "note": "Pineland cites $40k-$120k for a full coastal pile foundation (mid is midpoint). Likely low for a 6,000 sf Gulf-front luxury home with deep augered/driven piles and grade beams; Renick notes pilings push Gulf-front builds to $600+/sf. Needs geotech + structural quote.",
+      "status": "needs verification"
+    },
+    {
+      "id": "shell",
+      "label": "Shell: ICF / reinforced CMU structure, roof, impact glazing, MEP rough-in",
+      "low": 1602000,
+      "mid": 2124000,
+      "high": 2646000,
+      "formula": "(sqft*$/sf - foundation) * 45%",
+      "sources": [
+        "https://www.sennesdesignbuild.com/blog/how-much-does-a-custom-home-cost-in-sarasota-florida",
+        "https://tri-townconstruction.com/blog/luxury-home-cost-florida-guide-2025",
+        "https://blog.teamrenick.com/comparing-waterfront-risks-anna-maria-vs-longboat-key/"
+      ],
+      "note": "Total hard cost = sq ft x $/sf (low $600 = Sennes 'LBK starts at $600/sf' and Renick '$600+ with pilings'; mid $800 and high $1,000 from Tri-Town FL luxury $400-$800+, ultra-custom $1,000+). 45/55 shell/finish split is a modeling assumption - needs verification.",
+      "status": "sourced"
+    },
+    {
+      "id": "finishes",
+      "label": "Interior finishes, cabinetry, systems, elevator",
+      "low": 1958000,
+      "mid": 2596000,
+      "high": 3234000,
+      "formula": "(sqft*$/sf - foundation) * 55%",
+      "sources": [
+        "https://www.sennesdesignbuild.com/blog/how-much-does-a-custom-home-cost-in-sarasota-florida",
+        "https://tri-townconstruction.com/blog/luxury-home-cost-florida-guide-2025"
+      ],
+      "note": "See shell note; split is an assumption.",
+      "status": "sourced"
+    },
+    {
+      "id": "site_pool",
+      "label": "Site work, driveway/landscape, pool",
+      "low": 40000,
+      "mid": 120000,
+      "high": 200000,
+      "formula": "",
+      "sources": [
+        "https://www.homesbystrongsarasota.com/blog/-how-much-does-it-cost-to-build-a-custom-home-in-sarasota-2025-guide",
+        "https://tri-townconstruction.com/blog/luxury-home-cost-florida-guide-2025"
+      ],
+      "note": "Driveway+landscaping $10k-$50k+ (Homes by Strong); pools/outdoor kitchens $30k-$150k+ each (Tri-Town). Elevated pool in V zone may cost more - needs verification.",
+      "status": "sourced"
+    },
+    {
+      "id": "seawall",
+      "label": "Seawall / coastal armoring",
+      "low": 0,
+      "mid": 0,
+      "high": 0,
+      "formula": "",
+      "sources": [
+        "https://blog.teamrenick.com/cost-of-luxury-waterfront-homes-on-longboat-key-2025-market-rates/"
+      ],
+      "note": "Beach (not canal) frontage: armoring seaward of CCCL is generally restricted; set to $0. If a seawall/bulkhead exists or is permitted, Renick cites $500-$1,200 per linear foot. Needs verification by survey.",
+      "status": "needs verification"
+    },
+    {
+      "id": "soft_costs",
+      "label": "Soft costs: architect, structural/geotech, surveys, elevation certificate, CCCL/FDEP + Town of LBK permits, impact fees",
+      "low": 360000,
+      "mid": 600000,
+      "high": 900000,
+      "formula": "hard * 10%/12.5%/15%",
+      "sources": [],
+      "note": "10/12.5/15% of hard cost is an industry rule of thumb, NOT sourced. Get architect fee proposal, FDEP CCCL permit fee schedule, Town of Longboat Key and Manatee County impact fee schedules.",
+      "status": "needs verification"
+    },
+    {
+      "id": "contingency",
+      "label": "Contingency",
+      "low": 402400,
+      "mid": 832800,
+      "high": 1428000,
+      "formula": "(build subtotal) * contingency%",
+      "sources": [],
+      "note": "Applied to demolition+construction+site+soft. % is a user parameter.",
+      "status": "sourced"
+    },
+    {
+      "id": "carrying",
+      "label": "Carrying costs during design+build (property tax only)",
+      "low": 151200,
+      "mid": 189000,
+      "high": 226800,
+      "formula": "land*0.0135*years",
+      "sources": [
+        "https://blog.teamrenick.com/cost-of-luxury-waterfront-homes-on-longboat-key-2025-market-rates/"
+      ],
+      "note": "Renick: LBK (Manatee) ~13.5 mills on assessed value, no homestead. $5.6M x 1.35% = ~$75,600/yr x 2/2.5/3 yr (duration assumed). Excludes builder's risk, liability, and financing interest - needs verification.",
+      "status": "needs verification"
+    }
+  ],
+  "totals": {
+    "low": 10233600,
+    "likely": 12257800,
+    "high": 14506800
+  },
+  "construction_rate_references": [
+    {
+      "figure": "Longboat Key custom homes start at $600/sf",
+      "source": "https://www.sennesdesignbuild.com/blog/how-much-does-a-custom-home-cost-in-sarasota-florida"
+    },
+    {
+      "figure": "Sarasota luxury $450-$700+/sf (2026)",
+      "source": "https://www.sennesdesignbuild.com/blog/how-much-does-a-custom-home-cost-in-sarasota-florida"
+    },
+    {
+      "figure": "Sarasota high-end estate $500-$750+/sf (2025)",
+      "source": "https://www.homesbystrongsarasota.com/blog/-how-much-does-it-cost-to-build-a-custom-home-in-sarasota-2025-guide"
+    },
+    {
+      "figure": "FL luxury $400-$800+/sf; ultra-custom >$1,000/sf; flood-zone structural upgrades +$20k-$50k",
+      "source": "https://tri-townconstruction.com/blog/luxury-home-cost-florida-guide-2025"
+    },
+    {
+      "figure": "Barrier-island CMU $350-$550/sf in 2026; Gulf-front pilings push to $600+/sf",
+      "source": "https://blog.teamrenick.com/comparing-waterfront-risks-anna-maria-vs-longboat-key/"
+    }
+  ],
+  "drivers": [
+    "Land ($5.6M) is ~40-50% of total.",
+    "Finish tier $/sf: each $100/sf on 6,000 sf = $600k before soft costs/contingency.",
+    "Square footage.",
+    "V-zone engineering: pile depth/count (geotech), breakaway walls, elevation to BFE + freeboard, impact envelope.",
+    "Contingency and soft-cost %.",
+    "Schedule: CCCL/FDEP permitting and build duration drive carrying costs (~$75.6k/yr tax alone).",
+    "Post-Helene/Milton contractor demand on barrier islands (Renick)."
+  ]
+}

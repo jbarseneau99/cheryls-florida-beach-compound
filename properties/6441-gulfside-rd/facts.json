@@ -1,0 +1,31 @@
+{
+ "label": "6441 Gulfside Rd",
+ "parcel_id": "7843900007",
+ "boundary": "REAL \u2014 Manatee County Property Appraiser parcel GIS",
+ "pao": {
+  "acres": 0.714,
+  "sqft": 31100,
+  "frontage_ft": 100,
+  "depth_ft": 311,
+  "legal": "LOT 25 SLEEPY LAGOON; LESS ANY LANDS LYING SEAWARD OF THE EROSION CONTROL LINE DESC IN OR 1400/6466 PI#78439.0000/7",
+  "subdivision": "SLEEPY LAGOON PB7/14",
+  "zoning": "LBK_R-3SF",
+  "use": "Vacant Residential w/Site Amen (1554)",
+  "just_value": 3939750,
+  "roll_year": 2026,
+  "waterfront": "Y"
+ },
+ "address": "6441 Gulfside Road, Longboat Key, FL 34228",
+ "county": "Manatee County",
+ "neighborhood": "Sleepy Lagoon, north end of Longboat Key",
+ "mls": "84692771",
+ "list_price": "$5.6M",
+ "listed_acres": "0.71 ac",
+ "waterfront": "Gulf-front waterfront on Gulfside Road",
+ "agent": {
+  "name": "Reed Murphy",
+  "url": "https://reedmurphy.com",
+  "phone": "941-232-3304"
+ },
+ "sources": "Parcel geometry & PAO fields: Manatee County Property Appraiser ArcGIS (gis.manateepao.gov WebLayers/0), pulled Oct 24 2026. Roads: Manatee PAO street centerlines. Shoreline/vegetation: OpenStreetMap. Listing facts as provided by buyer."
+}

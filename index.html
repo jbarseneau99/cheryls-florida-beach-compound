@@ -1,7 +1,20 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cheryl's Florida Beach Compound</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">async function cons(){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.s=='constraints'));location.hash='constraints';
+  const el=document.getElementById('cons');el.style.display='block';
+  let data=null;try{const r=await fetch('constraints/constraints.json',{cache:'no-store'});if(r.ok)data=await r.json();}catch(e){}
+  if(!data||!data.length){el.innerHTML='<h2 style="font-size:36px;color:#ff6b88">Constraints</h2><p>Constraints research is in progress and will appear here soon.</p>';return;}
+  const esc=x=>String(x??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const g={};data.forEach(c=>(g[c.category||'Other']=g[c.category||'Other']||[]).push(c));
+  el.innerHTML='<h2 style="font-size:36px;color:#ff6b88;margin:0">Constraints (all properties)</h2>'+Object.entries(g).map(([k,v])=>`<h3>${esc(k)}</h3>`+v.map(c=>{
+    const ok=/^verified$/i.test(c.status||'');
+    return `<div class="card"><b style="font-size:26px">${esc(c.title)}</b><span class="badge ${ok?'ok':'nv'}">${ok?'Verified':'Needs verification'}</span>
+    <p><b>Rule:</b> ${esc(c.rule)}</p><p><b>Implication:</b> ${esc(c.implication)}</p>${c.notes?`<p class="src">${esc(c.notes)}</p>`:''}
+    <p>${(c.sources||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label||s.url)}</a>`).join(' · ')}</p></div>`}).join('')).join('');
+}
+</script>
 <style>
 html,body{margin:0;height:100%;background:#111;color:#eee;font:22px/1.45 sans-serif}
 header{display:flex;align-items:center;gap:14px;padding:10px 16px;background:#000;flex-wrap:wrap}
@@ -12,14 +25,16 @@ h1{font-size:30px;margin:0 18px 0 0;color:#ff6b88}
 #info{position:absolute;top:84px;left:60px;z-index:1000;background:rgba(0,0,0,.8);padding:14px 20px;border-radius:12px;max-width:500px}
 #info b.t{font-size:28px;color:#ff6b88}
 .btn{display:inline-block;margin-top:10px;background:#ff2d55;color:#fff;padding:12px 22px;border-radius:10px;font-weight:bold;font-size:24px;text-decoration:none;border:0;cursor:pointer}
-#dossier{display:none;position:absolute;top:70px;bottom:0;left:0;right:0;overflow:auto;padding:24px;background:#111;z-index:2000}
+#dossier,#cons{display:none;position:absolute;top:70px;bottom:0;left:0;right:0;overflow:auto;padding:24px;background:#111;z-index:2000}
 table{border-collapse:collapse;width:100%}td{padding:10px 14px;border-bottom:1px solid #333;vertical-align:top}td:first-child{color:#aaa;width:30%}
 a{color:#6cf}.src{font-size:16px;color:#999}
 .rl{font:bold 22px sans-serif;color:#ffd400;text-shadow:0 0 4px #000,0 0 4px #000;white-space:nowrap}
-.leaflet-control-layers{font-size:20px}.leaflet-tooltip{font-size:20px}
+.leaflet-control-layers{font-size:20px}
+.card{background:#1d1d1d;border-radius:12px;padding:16px 20px;margin:12px 0}.badge{font-size:16px;padding:4px 10px;border-radius:8px;margin-left:10px;font-weight:bold}
+.ok{background:#1b7f3a}.nv{background:#b8860b}h3{color:#ffd400;font-size:30px;margin:28px 0 6px}.leaflet-tooltip{font-size:20px}
 </style></head><body>
 <header><h1>Cheryl's Florida Beach Compound</h1><span id="tabs"></span></header>
-<div id="map"></div><div id="info"></div><div id="dossier"></div>
+<div id="map"></div><div id="info"></div><div id="dossier"></div><div id="cons"></div>
 <script>
 const COL={wood:'#2e8b57',scrub:'#6b8e23',wetland:'#3cb371',beach:'#f4d58d',water:'#1e90ff',coastline:'#00e5ff'};
 const map=L.map('map',{maxZoom:21});
@@ -62,8 +77,22 @@ async function show(slug){
    <tr><td>Listing agent</td><td>${a.name} · <a href="${a.url}" target="_blank">${a.url.replace('https://','')}</a> · <a href="tel:+1${a.phone.replace(/\D/g,'')}">${a.phone}</a></td></tr>
    </table><p class="src">${f.sources}</p>`;
 }
-function dos(on){document.getElementById('dossier').style.display=on?'block':'none'}
+function dos(on){document.getElementById('cons').style.display='none';document.getElementById('dossier').style.display=on?'block':'none'}
 J('properties.json').then(idx=>{const t=document.getElementById('tabs');
   idx.forEach(i=>{const b=document.createElement('button');b.className='tab';b.textContent=i.label;b.dataset.s=i.slug;b.onclick=()=>{dos(0);show(i.slug)};t.appendChild(b)});
-  const h=location.hash.slice(1);show(idx.find(i=>i.slug==h)?h:idx[0].slug);});
+  const c=document.createElement('button');c.className='tab';c.textContent='Constraints';c.dataset.s='constraints';c.onclick=cons;t.appendChild(c);
+  const h=location.hash.slice(1);if(h=='constraints'){cons();return;}show(idx.find(i=>i.slug==h)?h:idx[0].slug);});
+async function cons(){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.s=='constraints'));location.hash='constraints';
+  const el=document.getElementById('cons');el.style.display='block';
+  let data=null;try{const r=await fetch('constraints/constraints.json',{cache:'no-store'});if(r.ok)data=await r.json();}catch(e){}
+  if(!data||!data.length){el.innerHTML='<h2 style="font-size:36px;color:#ff6b88">Constraints</h2><p>Constraints research is in progress and will appear here soon.</p>';return;}
+  const esc=x=>String(x??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const g={};data.forEach(c=>(g[c.category||'Other']=g[c.category||'Other']||[]).push(c));
+  el.innerHTML='<h2 style="font-size:36px;color:#ff6b88;margin:0">Constraints (all properties)</h2>'+Object.entries(g).map(([k,v])=>`<h3>${esc(k)}</h3>`+v.map(c=>{
+    const ok=/^verified$/i.test(c.status||'');
+    return `<div class="card"><b style="font-size:26px">${esc(c.title)}</b><span class="badge ${ok?'ok':'nv'}">${ok?'Verified':'Needs verification'}</span>
+    <p><b>Rule:</b> ${esc(c.rule)}</p><p><b>Implication:</b> ${esc(c.implication)}</p>${c.notes?`<p class="src">${esc(c.notes)}</p>`:''}
+    <p>${(c.sources||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label||s.url)}</a>`).join(' · ')}</p></div>`}).join('')).join('');
+}
 </script></body></html>
